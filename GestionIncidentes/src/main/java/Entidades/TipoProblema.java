@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,12 +22,13 @@ import lombok.Setter;
 @Table(name = "TIPOS_DE_PROBLEMA")
 public class TipoProblema {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idgen")
+    @SequenceGenerator(initialValue = 1, name = "idgen", sequenceName = "tip_seq")
     private Long id;
     @Column(unique=true)
     private String nombre;
-    private int tiempoEstimado;
-    private int tiempoMaximo;
+    private int tiempoEstimadoHoras;
+    private int tiempoMaximoHoras;
     @ManyToMany
     private List<Especialidad> especialidades; 
 }

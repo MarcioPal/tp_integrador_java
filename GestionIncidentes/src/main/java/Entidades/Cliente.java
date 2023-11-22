@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +26,8 @@ import lombok.Setter;
 @Table(name = "CLIENTES")
 public class Cliente implements Serializable{
    @Id
-   @GeneratedValue(strategy=GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idgen")
+   @SequenceGenerator(initialValue = 1, name = "idgen", sequenceName = "Cli_seq")
    private Long id;
    @Column(unique=true)
    private Long cuit;

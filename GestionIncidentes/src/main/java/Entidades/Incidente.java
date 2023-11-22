@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +25,8 @@ import lombok.Setter;
 @Table(name = "INCIDENTES")
 public class Incidente {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idgen")
+    @SequenceGenerator(initialValue = 1, name = "idgen", sequenceName = "Inc_seq")
     private Long id;
     private String consideraciones;
     private Date fechaIngreso;

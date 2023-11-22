@@ -5,16 +5,19 @@
 package Controladores;
 
 import Servicios.SignInService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
 public class SignInController {
    private static SignInController instance;
    private SignInService service;
    
+   private SignInController(){
+       
+   }
    
+   //Este metodo deberia controlar a cual pantalla dirigirse segun el rol del usuario
+   public void iniciarSesion(){
+   
+   }
    public boolean verifyCredentials(String user, String pass){
        return service.verifyCredentials(user, pass);
    }

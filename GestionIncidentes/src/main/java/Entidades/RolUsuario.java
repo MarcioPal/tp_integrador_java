@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +24,8 @@ import lombok.Setter;
 @Table(name = "ROLES")
 public class RolUsuario {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idgen")
+    @SequenceGenerator(initialValue = 1, name = "idgen", sequenceName = "rol_seq")
     private Long id;
     @Column(unique=true)
     private String nombre;
